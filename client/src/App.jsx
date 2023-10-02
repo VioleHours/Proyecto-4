@@ -5,6 +5,7 @@ import About from "./components/About/About";
 import NavBar from "./components/NavBar/NavBar";
 import Cards from "./components/Cards/Cards";
 import Detail from "./components/Detail/Detail";
+import Form from "./components/Form/Form";
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -54,7 +55,7 @@ function App() {
       )}
       <div>
         <Routes>
-          <Route path="/" />
+          <Route path="/" element={<Form login={login}/> } />
           <Route
             path="home"
             element={<Cards onClose={onClose} characters={characters} />}
