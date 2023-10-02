@@ -3,6 +3,8 @@ import { useNavigate, useLocation, Routes, Route } from "react-router-dom";
 import "./App.css";
 import About from "./components/About/About";
 import NavBar from "./components/NavBar/NavBar";
+import Cards from "./components/Cards/Cards";
+import Detail from "./components/Detail/Detail";
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -47,13 +49,18 @@ function App() {
 
   return (
     <div className="App">
-      {location.pathname !== "/" && <NavBar onSearch={onSearch} addRandomCharacter={addRandomCharacter} />}
+      {location.pathname !== "/" && (
+        <NavBar onSearch={onSearch} addRandomCharacter={addRandomCharacter} />
+      )}
       <div>
         <Routes>
           <Route path="/" />
-          <Route path="home" />
+          <Route
+            path="home"
+            element={<Cards onClose={onClose} characters={characters} />}
+          />
           <Route path="about" element={<About />} />
-          <Route path="detail/:detailId" />
+          <Route path="detail/:detailId" element={ <Detail /> } />
           <Route path="/favorites" />
           <Route path="*" />
         </Routes>
