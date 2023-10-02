@@ -1,35 +1,65 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import { useNavigate, useLocation, Routes, Route } from "react-router-dom";
+import "./App.css";
+import About from "./components/About/About";
+import NavBar from "./components/NavBar/NavBar";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [characters, setCharacters] = useState([]);
+  const [access, setAccess] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const username = "rickmorty@gmail.com";
+  const password = "serie123";
+
+  useEffect(() => {
+    !access && navigate("/");
+  }, [access]);
+
+  const login = (userData) => {
+    if (userData.password === password && userData.username === username) {
+      setAccess(true);
+      navigate("/home");
+    }
+  };
+
+  const onSearch = (characters) => {
+    fetch(`https://rickandmortyapi.com/api/character/${characters}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.name) {
+          setCharacters((oldChars) => [...oldChars, data]);
+        } else {
+          window.alert("No hay personajes con este ID");
+        }
+      });
+  };
+
+  const onClose = (id) => {
+    setCharacters(characters.filter((character) => character.id !== id));
+  };
+
+  const addRandomCharacter = () => {
+    const id = Math.floor(Math.random() * 826) + 1;
+    onSearch(id);
+  };
 
   return (
-    <>
+    <div className="App">
+      {location.pathname !== "/" && <NavBar onSearch={onSearch} addRandomCharacter={addRandomCharacter} />}
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <Routes>
+          <Route path="/" />
+          <Route path="home" />
+          <Route path="about" element={<About />} />
+          <Route path="detail/:detailId" />
+          <Route path="/favorites" />
+          <Route path="*" />
+        </Routes>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
