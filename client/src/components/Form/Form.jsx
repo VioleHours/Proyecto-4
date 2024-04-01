@@ -1,4 +1,3 @@
-import './Form.css'
 import React from "react";
 import { validation } from './Validations';
 
@@ -36,7 +35,7 @@ const Form = ({login}) => {
     return(
         <div className='container'>
             <form onSubmit={handleSubmit}>
-            <h3>Por cuestion de pruebas... El user es rickmorty@gmail.com y la contraseña serie1234</h3>
+            <h3>Por cuestion de pruebas... El user es rickmorty@gmail.com y la contraseña serie123</h3>
             <label name='username'> Username: </label>
             <input type='text' name='username' value={userData.username} onChange={handleInputChange} />
             {errors.username !== ''? <p className='danger' >{errors.username}</p> : ''}
