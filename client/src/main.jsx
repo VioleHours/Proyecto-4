@@ -6,6 +6,8 @@ import rootReducer from "./reducers";
 import "./index.css";
 import App from "./App";
 import { Provider } from "react-redux";
+import 'tailwindcss/tailwind.css';
+
 
 const store = createStore(rootReducer);
 
