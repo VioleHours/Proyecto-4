@@ -33,7 +33,7 @@ const Form = ({login}) => {
     }
 
     return(
-        <div className='container'>
+        <div className='flex'>
             <form onSubmit={handleSubmit}>
             <h3>Por cuestion de pruebas... El user es rickmorty@gmail.com y la contraseña serie123</h3>
             <label name='username'> Username: </label>
