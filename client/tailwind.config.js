@@ -4,7 +4,16 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'rick-and-morty-1': "url('/img/RickAndMorty-1.jpg')",
+        'rick-and-morty-2': "url('/img/RickAndMorty-2.jpg')",
+        'rick-and-morty-3': "url('/img/RickAndMorty-3.jpg')",
+        'rick-and-morty-4': "url('/img/RickAndMorty-4.jpg')",
+        'rick-and-morty-5': "url('/img/RickAndMorty-5.jpg')",
+        'rick-and-morty-6': "url('/img/RickAndMorty-6.jpg')",
+      }
+    },
     screens: {
       "2xl": { max: "1535px" },
       // => @media (max-width: 1535px) { ... }

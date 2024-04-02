@@ -9,7 +9,7 @@ function Favorites({ favorites }) {
       <ul>
         {favorites.map(favorite => (
           <li key={favorite.id}>
-            {favorite.id} {/* Renderiza el id del personaje, asegúrate de que tu objeto favorito tenga una propiedad id */}
+            {favorite.id}
           </li>
         ))}
       </ul>

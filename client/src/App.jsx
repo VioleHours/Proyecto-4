@@ -50,11 +50,11 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="h-full">
       {location.pathname !== "/" && (
         <NavBar onSearch={onSearch} addRandomCharacter={addRandomCharacter} />
       )}
-      <div>
+      <div className="h-full">
         <Routes>
           <Route path="/" element={<Form login={login}/> } />
           <Route
