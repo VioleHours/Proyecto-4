@@ -6,7 +6,7 @@ export default function NavBar(props) {
     const url = useLocation()
     if(url.pathname !== '/'){
         return (
-            <nav>
+            <nav className="w-full justify-center">
                 <SearchBar onSearch={props.onSearch} />
                 <RandomCharacter addRandomCharacter={props.addRandomCharacter} />
                 <Link to={'/about'}>
